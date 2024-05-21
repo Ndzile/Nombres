@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tableau de bord</title>
+
+</head>
+{% include 'bureau_regional/base.html' %}
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Tableau de bord</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'dash' %}">Accueil</a></li>
+              <li class="breadcrumb-item active">Tableau de bord</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="callout callout-info">
+              <h5><i class="fas fa-info"></i> Note:</h5>
+              Your care sheet is ready, please click on the Print button to print it.
+            </div>
+
+
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+              <!-- title row -->
+              <div class="row">
+                <div class="col-12">
+                  <h4>
+                    <i class="fas fa-globe"></i> Coruscant Health, Inc.
+                    <small class="float-right">Date: 5/18/2024</small>
+                  </h4>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- info row -->
+              <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                  From
+                  <address>
+                    <strong>Coruscant, Inc.</strong><br>
+                    795 Folsom Ave, Suite 600<br>
+                    San Francisco, CA 94107<br>
+                    Phone: (804) 123-5432<br>
+                    Email: info@coruscant.com
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                  To
+                  <address>
+                {% if user.is_authenticated %}  
+                    <strong>{{user.last_name}} {{user.first_name}}</strong><br>
+                    795 Folsom Ave, Suite 600<br>
+                    San Francisco, CA 94107<br>
+                    Phone: (555) 539-1037<br>
+                    Email: {{user.email}}
+                {% else %}
+                <h5>User is disconnected.</h5>    
+                {% endif %}
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                  <b>Sheet #007612</b><br>
+                  <br>
+                  <b>Sheet ID:</b> 4F3S8J<br>
+                  <b>Generate:</b> 5/18/2024<br>
+                  <b>Number:</b> 968-34567
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Information from the patient's care record.</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Patient ID</th>
+                    <th>Full name</th>
+                    <th>Birth</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Tension</th>
+                    <th>Weight</th>
+                    <th>Caring doctor</th>
+                    <th>Prescription</th>
+                    <th>Exam</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for patient in patients %}
+                  <tr>
+                      <td class="text-center">{{patient.id}}</td>
+                      <td class="text-center">{{patient.last_name}} {{patient.first_name}}</td>
+                      <td class="text-center">{{patient.date_of_birth}}</td>
+                      <td class="text-center">{{patient.gender}}</td>
+                      <td class="text-center">{{patient.email}}</td>
+                      <td class="text-center">{{patient.phone}}</td>
+                      <td class="text-center">{{patient.address}}</td>
+                      <td class="text-center">{{patient.tension}}</td>
+                      <td class="text-center">{{patient.weight}}</td>
+                      <td class="text-center">{{patient.name_caring_doctor}}</td>
+                      <td class="text-center">{{patient.prescription}}</td>
+                      <td class="text-center">{{patient.results_of_orders}}</td>
+                  </tr>
+                  {% endfor %}
+
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Patient ID</th>
+                    <th>Full name</th>
+                    <th>Birth</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Tension</th>
+                    <th>Weight</th>
+                    <th>Caring doctor</th>
+                    <th>Prescription</th>
+                    <th>Exam</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+             
+              </div>
+              <!-- /.row -->
+
+              <!-- this row will not appear when printing -->
+              <div class="row no-print">
+                <div class="col-12">
+                    <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+
+                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                    <i class="fas fa-download"></i> Generate PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+<br></br>
+{% endblock %}
+
+</body>
+</html>

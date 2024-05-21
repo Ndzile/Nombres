@@ -1,73 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nombres - Login</title>
+{% extends 'layout.html' %}
 
-    <style>
-                /* General Styles */
-        body {
-          font-family: sans-serif;
-          margin: 0;
-          padding: 20px;
-        }
+{% block content %}
 
-        h1 {
-          text-align: center;
-          margin-bottom: 20px;
-        }
-
-        /* Form Styles */
-        form {
-          width: 300px;
-          margin: 0 auto;
-          padding: 20px;
-          border: 2px solid #4CAF50;
-          border-radius: 25px;
-        }
-
-        label {
-          display: block;
-          margin-bottom: 5px;
-          font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 10px;
-          border: 1px solid #ccc;
-          border-radius: 3px;
-        }
-
-        button[type="submit"] {
-          background-color: #4CAF50;
-          color: white;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 3px;
-          cursor: pointer;
-        }
-
-        /* Error Message Styles */
-        .error-message {
-          color: red;
-          margin-bottom: 10px;
-        }
-
-    </style>
-<body>
-    <h1>Nombres - Login</h1>
     {% if error_message %}
         <p style="color: red;">{{ error_message }}</p>
     {% endif %}
-    <form method="post">
-        {% csrf_token %}  <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required autofocus><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br>
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>
+
+
+<body class="hold-transition login-page">
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="/" class="h1"><b style="color: blue;">Nombres</b> - JPC</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Connexion de l'utilisateur</p>
+
+      <form action="{% url 'connexion' %}" method="post">
+          {% csrf_token %}
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Entrez votre nom d'utilisateur" id="username" name="username" required class="py-[15px] outline-none"/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Entrez votre mot de passe" name="password" id="password" class="py-[15px] outline-none"/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-7">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-5">
+            <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+              <br>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+
+      <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+                <a href="#" class="text-center" style="color: blue;">Je ne suis pas encore inscrit</a>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+              <a href="#" class="btn btn-block btn-dark">
+                  M'inscrire
+              </a>
+          </div>
+          <!-- /.col -->
+      </div>
+
+      <p class="mb-0">
+          <a href="{% url 'password_reset' %}" style="color: #FF0000;">J'ai oublié mon mot de passe</a>
+      </p>
+        
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+{% endblock%}

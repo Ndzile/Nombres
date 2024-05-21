@@ -1,0 +1,104 @@
+{% extends 'users/layout.html' %}
+
+<div>{% block content %}
+{% for message in messages %}
+    <strong><i style="color: green;">{{message}}</i></strong>
+{% endfor %}</div>
+
+
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="{% url 'home' %}" class="h1"><b>Coruscant</b> Health</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Register a new membership</p>
+      <form action="/register" method="post">
+          {% csrf_token %}
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Enter your Username" id="username" name="username" required class="py-[15px] outline-none"/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Enter your Firstname" id="firstname" name="firstname" required class="py-[15px] outline-none "/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Enter your Lastname" id="lastname" name="lastname" required class="py-[15px] outline-none "/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Email" name="email" id="email" required class="py-[15px] outline-none"/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" name="password" id="password" class="py-[15px] outline-none"/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Confirm password" id="comfirmpwd" name="comfirmpwd" class="py-[15px] outline-none"/>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+              <label for="agreeTerms">
+               I agree to the <a href="#">terms</a>
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+              <br>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+                <a href="{% url 'home' %}" class="text-center">I have already register</a>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+              <a href="{% url 'home' %}" class="btn btn-block btn-dark">
+                  Login
+              </a>
+          </div>
+          <!-- /.col -->
+        </div>
+    
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
+{% endblock%}

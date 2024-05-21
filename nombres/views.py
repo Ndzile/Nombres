@@ -83,8 +83,28 @@ def dash(request):
       # recent_news = News.objects.order_by('-created_at')[:3]  # Get 3 recent news items
       # context['recent_news'] = recent_news
 
-    return render(request, 'index.html', context)
+    return render(request, 'bureau_national/dash_bnjpc.html', context)
 
+
+def dash_brjpc(request):
+    context = {}  # Create an empty context dictionary
+
+      # You can optionally add logic here to populate the context with data
+      # For example, to display recent news or announcements:
+      # recent_news = News.objects.order_by('-created_at')[:3]  # Get 3 recent news items
+      # context['recent_news'] = recent_news
+
+    return render(request, 'bureau_regional/dash_brjpc.html', context)
+
+def dash_cljpc(request):
+    context = {}  # Create an empty context dictionary
+
+      # You can optionally add logic here to populate the context with data
+      # For example, to display recent news or announcements:
+      # recent_news = News.objects.order_by('-created_at')[:3]  # Get 3 recent news items
+      # context['recent_news'] = recent_news
+
+    return render(request, 'coordination_locale/dash_cljpc.html', context)
 
 def signout(request):
     logout(request)

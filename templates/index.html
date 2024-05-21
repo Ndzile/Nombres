@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nombres</title>
+    </head>
+<body>
+    <h1>Bienvenue à la gestion des statistiques des jeunes de JPC</h1>
+    <p>Ceci est la page d'accueil de votre application de gestion des jeunes JPC.</p>
+    <p>Vous trouverez ici des liens vers différentes fonctionnalités.</p>
+
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-sign-out-alt"></i>
+        <p>
+            Tableau de bord
+        </p>
+    </a>
+    <section>
+        <h2>Intendance Nationale</h2>
+        <ul>
+            <li><a href="#">Enregistrer membre BNJPC</a></li>
+            <li><a href="#">Liste membres BNJPC</a></li>
+            <li><a href="#">Liste régions</a></li>
+            <li><a href="#">Liste coordinations locales</a></li>
+            <li><a href="#">Liste membres</a></li>
+            <li><a href="#">Contributions</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Intendance Régionale</h2>
+        <ul>
+            <li><a href="{% url 'creer_membre_bureau_regional' %}">Enregistrer membre BRJPC</a></li>
+            <li><a href="#">Liste membres BRJPC</a></li>
+            <li><a href="#">Liste coordinations locales</a></li>
+            <li><a href="#">Liste des membres région</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Coordination Locale</h2>
+        <ul>
+            <li><a href="{% url 'creer_membre_coordination_locale' %}">Enregistrer membre coordination locale</a></li>
+            <li><a href="#">Liste des jeunes</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Événements</h2>
+        <ul>
+            <li><a href="/creer_evenement">Créer un nouvel événement</a></li>
+            <li><a href="/liste_evenements">Liste des événements</a></li>
+        </ul>
+    </section>
+
+    <a href="{% url 'signout' %}" class="nav-link">
+        <i class="nav-icon fas fa-sign-out-alt"></i>
+        <p>
+            Déconnexion
+        </p>
+    </a>
+
+</body>
+</html>

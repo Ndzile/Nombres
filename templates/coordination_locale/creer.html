@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Local Coordination Member</title>
+    </head>
+<body>
+    <h1>Create Local Coordination Member</h1>
+    {% if form.errors %}
+        <p style="color: red;">Please correct the following errors:</p>
+        <ul>
+            {% for error in form.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Member</button>
+    </form>
+</body>
+</html>

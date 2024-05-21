@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Membres du Bureau Régional</h1>
+
+<p>
+    <a href="{% url 'creer_membre_bureau_regional' %}">Créer un nouveau membre</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Région</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for membre in membres %}
+        <tr>
+            <td>{{ membre.nom }}</td>
+            <td>{{ membre.prenom }}</td>
+            <td>{{ membre.region.nom }}</td>
+            <td>
+                <a href="{% url 'modifier_membre_bureau_regional' membre.id %}">Modifier</a> |
+                <a href="{% url 'supprimer_membre_bureau_regional' membre.id %}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
